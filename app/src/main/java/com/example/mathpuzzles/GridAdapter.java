@@ -4,11 +4,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
+import android.widget.LinearLayout;
+import android.widget.TextView;
 public class GridAdapter extends BaseAdapter {
     Puzzles_Activity puzzlesActivity;
-    public GridAdapter(Puzzles_Activity puzzlesActivity) {
+    int pos;
+    int tick;
+    int border;
+    int[] level;
+    public GridAdapter(Puzzles_Activity puzzlesActivity, int pos, int tick, int border, int[] level) {
         this.puzzlesActivity=puzzlesActivity;
+        this.pos=pos;
+        this.tick=tick;
+        this.border=border;
+        this.level=level;
     }
 
     @Override
@@ -29,6 +38,21 @@ public class GridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view1= LayoutInflater.from(puzzlesActivity).inflate(R.layout.grid_level,parent,false);
+        LinearLayout ll=view1.findViewById(R.id.llitemgridborder);
+        TextView tt=view1.findViewById(R.id.lock);
+        int index=position+1;
+
+            tt.setText(""+index);
+            int Nullable = 0;
+            tt.setBackgroundResource(Nullable);
+            tt.setBackgroundResource(tick);
+            ll.setBackgroundResource(border);
+
+
+
+
+
+
         return view1;
     }
 }

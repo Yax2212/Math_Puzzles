@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainPage_Activity extends AppCompatActivity {
+    public static SharedPreferences sharedPreferences;
+    public static SharedPreferences.Editor myedit;
 TextView Continue,Puzzle,Pro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,9 @@ TextView Continue,Puzzle,Pro;
         Continue=findViewById(R.id.cnt);
         Puzzle=findViewById(R.id.pzl);
         Pro=findViewById(R.id.pro);
+
+        sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        myedit = sharedPreferences.edit();
 
         Continue.setOnClickListener(new View.OnClickListener() {
             @Override
