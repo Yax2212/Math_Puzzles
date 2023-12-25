@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class Continue_Activity extends AppCompatActivity {
 
     TextView txtAnswer, b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, levelNumber;
-    ImageView delete, puzzles;
+    ImageView delete, puzzles,skip;
     Button submit;
     String ans = "";
     int index = 1, image = 0;
@@ -27,6 +27,7 @@ public class Continue_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue);
+        skip=findViewById(R.id.skipPuzzle);
         levelNumber = findViewById(R.id.levelNumber);
         puzzles = findViewById(R.id.puzzles);
         txtAnswer = findViewById(R.id.txtAnswer);
@@ -43,18 +44,30 @@ public class Continue_Activity extends AppCompatActivity {
         b9 = findViewById(R.id.btn9);
         b0 = findViewById(R.id.btn0);
 
-
-
         int s2 = MainPage_Activity.sharedPreferences.getInt("Leavel", 0);
-
-        Log.d("ASASAA", "onCreate: continue  = "+s2);
-
         index = s2;
         int board = index + 1;
 
         puzzles.setImageResource(Level[index]);
         levelNumber.setText("Puzzle " + board);
 
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                index++;
+                MainPage_Activity.myedit.putInt("Leavel", index);
+                MainPage_Activity.myedit.commit();
+                ans = "";
+                txtAnswer.setText(ans);
+                
+                int s2 = MainPage_Activity.sharedPreferences.getInt("Leavel", 0);
+                index = s2;
+                int board = index + 1;
+
+                puzzles.setImageResource(Level[index]);
+                levelNumber.setText("Puzzle " + board);
+            }
+        });
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,6 +153,7 @@ public class Continue_Activity extends AppCompatActivity {
                 int input = Integer.parseInt(ans);
                 int tans = Integer.parseInt(answer[index]);
                 if (input == tans) {
+
                     index++;
 
                     MainPage_Activity.myedit.putInt("Leavel", index);

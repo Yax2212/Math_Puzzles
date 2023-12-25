@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainPage_Activity extends AppCompatActivity {
+
     public static SharedPreferences sharedPreferences;
     public static SharedPreferences.Editor myedit;
 TextView Continue,Puzzle,Pro;

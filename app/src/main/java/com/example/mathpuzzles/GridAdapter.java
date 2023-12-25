@@ -11,13 +11,16 @@ public class GridAdapter extends BaseAdapter {
     int pos;
     int tick;
     int border;
+    int nnn;
     int[] level;
-    public GridAdapter(Puzzles_Activity puzzlesActivity, int pos, int tick, int border, int[] level) {
+
+    public GridAdapter(Puzzles_Activity puzzlesActivity, int pos, int tick, int border, int[] level, int nnn) {
         this.puzzlesActivity=puzzlesActivity;
         this.pos=pos;
         this.tick=tick;
         this.border=border;
         this.level=level;
+        this.nnn=nnn;
     }
 
     @Override
@@ -40,16 +43,14 @@ public class GridAdapter extends BaseAdapter {
         View view1= LayoutInflater.from(puzzlesActivity).inflate(R.layout.grid_level,parent,false);
         LinearLayout ll=view1.findViewById(R.id.llitemgridborder);
         TextView tt=view1.findViewById(R.id.lock);
-        int index=position+1;
 
-            tt.setText(""+index);
-            int Nullable = 0;
-            tt.setBackgroundResource(Nullable);
-            tt.setBackgroundResource(tick);
-            ll.setBackgroundResource(border);
+        int index=nnn+position+1;
 
-
-
+                tt.setText(""+index);
+                int Nullable = 0;
+                tt.setBackgroundResource(Nullable);
+                tt.setBackgroundResource(tick);
+                ll.setBackgroundResource(border);
 
 
 
